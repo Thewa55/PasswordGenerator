@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Password generator</title>
+</head>
+<body>
+<script>
+  var passVar = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z']
+  var passLength = prompt("How long do you want the password to be? (8-128)")
+    for(i = 0; i < passLength; i++){
+      let place = Math.floor(Math.random() * 26) 
+      let passOut = passVar[place];
+        if(place <26){
+          if (Math.floor(Math.random() * 2) === 0){
+            passOut = passOut.toUpperCase(); 
+          } 
+          else{
+            passOut = passOut.toLowerCase()
+          }
+        }
+        else{
+        }
+    document.write(passOut);
+    }
+</script>
+</body>
+</html>
