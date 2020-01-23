@@ -4,8 +4,10 @@ var passwordText = document.querySelector("#password");
 var lowercase = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'];
 var numbers = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
 var symbols = ["~","`","!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "_", "-", "+", "/", "'", "<", ">", "?"];
-
+var pool = []
 // Write password to the #password input
+
+
 function generatePassword(){
   var passLength = prompt("How long do you want the password to be? (8-128")
   var passLength = parseInt(passLength)
@@ -21,14 +23,21 @@ function generatePassword(){
     var upperPass = confirm("Would you like uppercase letters in your password?")
     var numPass = confirm("Would you like numbers in your password?")
     var symPass = confirm("Would you like symbols in the password?")
-    
+    if(lowPass == true || upperPass == true){
+      pool.push(lowercase);
+    };
+    if(numPass == true){
+      pool.push(numbers);
+    };
+    if(symPass == true){
+      pool.push(symbols);
+    };
+    console.log(pool);
   }
-  // else{
-  //   alert("You need to enter a number")
-  // }
 }
 
 function writePassword() {
+  var pool =[]
   var password = generatePassword();
   passwordText.value = password;
 }
