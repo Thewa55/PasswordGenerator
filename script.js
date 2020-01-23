@@ -1,7 +1,7 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
 var passwordText = document.querySelector("#password");
-var lowercase = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'];
+var lowercase = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
 var numbers = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
 var symbols = ["~","`","!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "_", "-", "+", "/", "'", "<", ">", "?"];
 var pool = []
@@ -10,8 +10,7 @@ var pool = []
 
 function generatePassword(){
   var pool =[]
-  var passLength = prompt("How long do you want the password to be? (8-128")
-  var passLength = parseInt(passLength)
+  var passLength = parseInt(prompt("How long do you want the password to be? (8-128"))
   console.log(passLength)
   if(passLength < 8){
     alert("The password needs to have at least 8 characters. Hit generate to start again")
@@ -40,14 +39,14 @@ function generatePassword(){
       var passString = pool[pullArray][pullIndex]
       if(upperPass == true && lowPass == true && pullArray == 0){
         if (Math.floor(Math.random() * 2) === 0){
-        passIndex = passIndex.toUpperCase(); 
+        passString = passString.toUpperCase(); 
         } 
         else{
-        passIndex = passIndex.toLowerCase()
+        passString = passString.toLowerCase()
         }
       }
       else if (upperPass == true && lowPass == false && pullArray == 0){
-        passIndex = passIndex.toUpperCase();
+        passString = passString.toUpperCase();
       }
       console.log("this is the actual password output " + passString)
     }
