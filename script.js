@@ -9,6 +9,7 @@ var pool = []
 
 
 function generatePassword(){
+  var pool =[]
   var passLength = prompt("How long do you want the password to be? (8-128")
   var passLength = parseInt(passLength)
   console.log(passLength)
@@ -32,12 +33,19 @@ function generatePassword(){
     if(symPass == true){
       pool.push(symbols);
     };
-    console.log(pool);
+    console.log(pool)
+    for(i=0; i < passLength; i++){
+      var pullArray = Math.floor(Math.random() * pool.length);
+      var pullString = Math.floor(Math.random() * pool[pullArray].length);
+      // console.log("this is the array " + pullArray)
+      // console.log("this is the array position " + pullString)
+      var passString = pool[pullArray][pullString]
+      console.log("this is the actual password output " + passString)
+    }
   }
 }
 
 function writePassword() {
-  var pool =[]
   var password = generatePassword();
   passwordText.value = password;
 }
