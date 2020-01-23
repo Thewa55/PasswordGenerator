@@ -36,18 +36,18 @@ function generatePassword(){
     console.log(pool)
     for(i=0; i < passLength; i++){
       var pullArray = Math.floor(Math.random() * pool.length);
-      var pullString = Math.floor(Math.random() * pool[pullArray].length);
-      var passString = pool[pullArray][pullString]
+      var pullIndex = Math.floor(Math.random() * pool[pullArray].length);
+      var passString = pool[pullArray][pullIndex]
       if(upperPass == true && lowPass == true && pullArray == 0){
         if (Math.floor(Math.random() * 2) === 0){
-        passString = passString.toUpperCase(); 
+        passIndex = passIndex.toUpperCase(); 
         } 
         else{
-        passString = passString.toLowerCase()
+        passIndex = passIndex.toLowerCase()
         }
       }
       else if (upperPass == true && lowPass == false && pullArray == 0){
-        passString = passString.toUpperCase();
+        passIndex = passIndex.toUpperCase();
       }
       console.log("this is the actual password output " + passString)
     }
