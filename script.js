@@ -35,6 +35,9 @@ function generatePassword(){
     var upperPass = confirm("Would you like uppercase letters in your password?")
     var numPass = confirm("Would you like numbers in your password?")
     var symPass = confirm("Would you like symbols in the password?")
+    if(lowPass == false && upperPass == false && numPass == false && symPass == false){
+      alert("You have to select at least one variable to generate a code, please hit generate password to start again.")
+    }
     if(lowPass == true || upperPass == true){
       if(lowPass == true){
         storePass = storePass + lowercase[Math.floor(Math.random() * 26)]
