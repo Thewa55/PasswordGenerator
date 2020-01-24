@@ -20,8 +20,10 @@ var symPass = true
 function generatePassword(){
   var pool =[]
   storePass = ""
-  var passLength = parseInt(prompt("How long do you want the password to be? (8-128"))
-  console.log(passLength)
+  var passLength = parseInt(prompt("How long do you want the password to be? (8-128)"))
+  while(isNaN(passLength)){
+    passLength =parseInt(prompt("No letters allowed or blank allowed, please enter a number between 8-128"))
+  }
   if(passLength < 8){
     alert("The password needs to have at least 8 characters. Hit generate to start again")
   }
