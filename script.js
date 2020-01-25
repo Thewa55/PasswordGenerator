@@ -16,12 +16,9 @@ var numPass = true
 var symPass = true
 // Write password to the #password input
 
-
 function generatePassword(){
-  var pool =[]
-  storePass = ""
-  var passLength = parseInt(prompt("How long do you want the password to be? (8-128)"))
-  while(isNaN(passLength)){
+  passLength = parseInt(prompt("How long do you want the password to be? (8-128)"))
+  while(isNaN(passLength) || passLength == null){
     passLength =parseInt(prompt("No letters allowed or blank allowed, please enter a number between 8-128"))
   }
   if(passLength < 8){
@@ -38,53 +35,71 @@ function generatePassword(){
     if(lowPass == false && upperPass == false && numPass == false && symPass == false){
       alert("You have to select at least one variable to generate a code, please hit generate password to start again.")
     }
-    if(lowPass == true || upperPass == true){
-      if(lowPass == true){
-        storePass = storePass + lowercase[Math.floor(Math.random() * 26)]
-        passLength = passLength - 1
-      }
-      if(upperPass == true){
-        storePass = storePass + lowercase[Math.floor(Math.random() * 26)].toUpperCase()
-        passLength = passLength - 1
-      }
-      pool.push(lowercase);
-    };
-    if(numPass == true){
-      if(numPass == true){
-        storePass = storePass + numbers[Math.floor(Math.random() * 10)]
-        passLength = passLength - 1
-      }
-      pool.push(numbers);
-    };
-    if(symPass == true){
-      if(symPass == true){
-        storePass = storePass + symbols[Math.floor(Math.random() * 20)]
-        passLength = passLength - 1
-      }
-      pool.push(symbols);
-    };
-    console.log(passLength)
-    for(i=0; i < passLength; i++){
-      var pullArray = Math.floor(Math.random() * pool.length);
-      var pullIndex = Math.floor(Math.random() * pool[pullArray].length);
-      var passString = pool[pullArray][pullIndex]
-      if(upperPass == true && lowPass == true && pullArray == 0){
-        if (Math.floor(Math.random() * 2) === 0){
-        passString = passString.toUpperCase(); 
-        } 
-        else{
-        passString = passString.toLowerCase()
-        }
-      }
-      else if (upperPass == true && lowPass == false && pullArray == 0){
-        passString = passString.toUpperCase();
-      }
-      console.log("this is the actual password output " + passString)
-      storePass = storePass + passString
-    }
+    logic(passLength, lowPass, upperPass, numPass, symPass)
   }
   return storePass
 }
+
+
+
+function logic(length, lower, upper, nums, syms){
+  console.log(length)
+  console.log(lower)
+  console.log(upper)
+  console.log(nums)
+  console.log(syms)
+  var pool =[]
+  storePass = ""
+  if(lower == true || upper == true){
+    if(lower == true){
+      storePass = storePass + lowercase[Math.floor(Math.random() * 26)]
+      length = length - 1
+    }
+    if(upper == true){
+      storePass = storePass + lowercase[Math.floor(Math.random() * 26)].toUpperCase()
+      length = length - 1
+    }
+    pool.push(lowercase);
+  };
+  if(nums == true){
+    if(nums == true){
+      storePass = storePass + numbers[Math.floor(Math.random() * 10)]
+      length = length - 1
+    }
+    pool.push(numbers);
+  };
+  if(syms == true){
+    if(syms == true){
+      storePass = storePass + symbols[Math.floor(Math.random() * 20)]
+      length = length - 1
+    }
+    pool.push(symbols);
+  };
+  console.log(length)
+  for(i=0; i < length; i++){
+    var pullArray = Math.floor(Math.random() * pool.length);
+    var pullIndex = Math.floor(Math.random() * pool[pullArray].length);
+    var passString = pool[pullArray][pullIndex]
+    if(upper == true && lower == true && pullArray == 0){
+      if (Math.floor(Math.random() * 2) === 0){
+      passString = passString.toUpperCase(); 
+      } 
+      else{
+      passString = passString.toLowerCase()
+      }
+    }
+    else if (upper == true && lower == false && pullArray == 0){
+      passString = passString.toUpperCase();
+    }
+    console.log("this is the actual password output " + passString)
+    storePass = storePass + passString
+  }
+  console.log(storePass)
+  return storePass
+}
+
+
+
 
 function writePassword() {
   var password = generatePassword();
